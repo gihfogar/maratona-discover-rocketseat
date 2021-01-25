@@ -8,5 +8,5 @@
 - HTML e CSS quase completos.
 
 <p align="center">
-  <img width="300" height="350" src="https://user-images.githubusercontent.com/73079636/105691808-9b463480-5ef5-11eb-9a43-f497c092489d.jpg">
+  <img width="300" height="350" src="https://user-images.githubusercontent.com/73079636/105692607-861dd580-5ef6-11eb-9db2-893aba44c585.jpg">
 </p>
