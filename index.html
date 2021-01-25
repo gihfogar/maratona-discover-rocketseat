@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Sempre que tiver uma palavra, seguida de sinal de = e depois "algo dentro" é um atributo. -->
+<html lang="pt-br">
+  <!-- head contém os metadados do meu arquivo: referencia o próprio documento -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dev.financ€$</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
+  </head>
+  <!-- o body, é tudo o que vamos conseguir ver na tela. -->
+  <body>
+    <!-- Analise em quantas partes a pagina se divide, e então crie essas divisões no body: header (cabeçalho), main(corpo) e footer(rodapé)-->
+
+    <header>
+      <!-- normalmente temos apenas 1 h1 por cada pagina, que é o titulo principal -->
+      <h1 id="logo">dev.financ€$</h1>
+    </header>
+
+    <main class="container">
+      <!-- Abrimos seções para ficar mais arrumadinho. Uma seção logo de cara tem um h2. Também podemos atribuir um atributo chamado id para dizer o que essa seção fará. (organizar) Podemos também usar o atributo "class"-->
+      <section id="balance">
+        <!-- h2 são subdivisões que temos na pagina e h3 é a subdivisão do h2 -->
+        <h2>Balanço</h2>
+        <div class="card">
+          <!-- Uma caixa, como um container -->
+          <h3>Entradas</h3>
+          <p>€ 5.000,00</p>
+        </div>
+
+        <div class="card">
+          <h3>Saídas</h3>
+          <p>€ 2.000,00</p>
+        </div>
+
+        <div class="card total">
+          <h3>Total</h3>
+          <p>€ 3.000,00</p>
+        </div>
+      </section>
+
+      <section id="transaction">
+        <h2>Transações</h2>
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="description">Luz</td>
+              <td class="expense">- € 500,00</td>
+              <td class="date">23/01/2021</td>
+            </tr>
+
+            <tr>
+              <td class="description">Criação Website</td>
+              <td class="income"> € 5.000,00</td>
+              <td class="date">23/01/2021</td>
+            </tr>
+
+            <tr>
+              <td class="description">Internet</td>
+              <td class="expense">- € 200,00</td>
+              <td class="date">23/01/2021</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>dev.financ€$</p>
+    </footer>
+  </body>
+</html>

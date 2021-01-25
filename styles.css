@@ -1,0 +1,149 @@
+/* Seletor universal: * {} - significa que estou selecionando todas as tags que eu tiver do CSS. Acaba por 'pesar' mais quando faço o CSS, que é um efeito cascata. quando eu tenho um 'id', tem mais força que um h1 e assim por diante. o mais forte seria o '!important', QUASE NUNCA USADO, por conta da especificidade e da cascata. */
+
+/* Global ========================================== */
+
+/* root é um seletor que vai reverenciar a raiz do HTML. */
+:root {
+  --dark-blue: #363f5f;
+}
+* {
+  /* margin é o espaçamento entre um elemento e outro */
+  margin: 0;
+  /*padding é o preenchimento interno dos elementos do container, e a medida posta, vai valer para os 4 lados. Porém podemos por mais de um valor, 2, 3 ou 4, trabalhando como um relogio. */
+  padding: 0;
+  /* box-sizing é a medida da caixa, o padrão é fazer a medida de acordo com o conteudo. Isso vai aumentar a borda do container, e não do conteúdo. Entao podemos mudar para border-box que é a partir da borda do conteúdo, sem mexer no tamanho do container maior */
+  box-sizing: border-box;
+}
+
+body {
+  /*  background é a cor do fundo da caixa*/
+  background: #e2e3e6;
+  /* Pode copiar a fonte do google, qual quiser e faz a configuração no font-family. */
+  font-family: "Poppins", "sans-serif";
+}
+
+/* A class, diferente do id é chamado por um . e o nome */
+.container {
+  /* No CSS podemos atribuir funções para um conjunto de ações. A função min tem que levar 2 argumentos. É como dizer: que quando a tela está pequena o minimo de espaçamento será determinado valor e quando aumentar a tela o maximo de espaçamento será determinado valor. */
+  width: min(90vw, 800px);
+  margin: auto;
+}
+
+/* Titles ========================================== */
+h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--dark-blue);
+
+  font-weight: normal;
+}
+
+/* Header ========================================== */
+header {
+  background: #2d4a22;
+  padding: 2rem 0 10rem;
+  /* Text-align é o alinhamento do texto, neste caso ao centro */
+  text-align: center;
+}
+
+/* Esse é header, mas podemos por só a #logo. é o id dentro da tag header, h1 */
+#logo {
+  color: white;
+  /* Font-weight é o peso da fonte, mexendo na grossura da letra */
+  font-weight: 100;
+}
+
+/* Balance ========================================== */
+#balance {
+  margin-top: -8rem;
+}
+
+#balance h2 {
+  color: white;
+}
+/* Cards ========================================== */
+.card {
+  background: white;
+  padding: 1.5rem 2rem;
+  /* border-radius é o arredondamento da borda da caixa */
+  border-radius: 0.25rem;
+  /* margin-bottom é o espaçamento embaixo */
+  margin-bottom: 2rem;
+
+  color: var(--dark-blue);
+}
+
+.card h3 {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 2rem;
+  /* line-height é a separação de uma linha pra outra caso haja quebra.  */
+  line-height: 3rem;
+
+  margin-top: 1rem;
+}
+
+/* esse . no meio de duas palavras significa que estou procurando um elemento que tem duas classes. No HTML posso atribuir quantas classes eu quiser, desde que no CSS eu separo desta forma */
+.card.total {
+  background: #49aa26;
+  color: white;
+}
+
+/* Table ========================================== */
+#data-table {
+  /* width a 100% é para pegar 100% do tamanho da caixa */
+  width: 100%;
+  /* border-spacing é o espaçamento das linhas da tabela, em cima e dos lados tambem. */
+  border-spacing: 0 0.5rem;
+  color: #969cb3;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+#table thead th {
+  background: white;
+
+  font-weight: normal;
+  padding: 1rem 2rem;
+
+  text-align: left;
+}
+
+table tbody tr {
+  opacity: 0.7;
+}
+
+table tbody tr:hover {
+  opacity: 1;
+}
+
+#table tbody td {
+  background: white;
+  padding: 1rem 2rem;
+}
+
+td.description {
+  color: var(--dark-blue);
+}
+
+td.income {
+  color: #12a454;
+}
+
+td.expense {
+  color: #e92929;
+}
+
+/* Footer ========================================== */
+footer {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  color: var(--dark-blue);
+  opacity: 0.6;
+}
