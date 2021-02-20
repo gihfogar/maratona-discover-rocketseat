@@ -1,83 +1,138 @@
+<!-- "A mente que se abre a uma nova ideia jamais voltará ao seu tamanho original" - Albert Einstein -->
+
 <!DOCTYPE html>
 <!-- Sempre que tiver uma palavra, seguida de sinal de = e depois "algo dentro" é um atributo. -->
 <html lang="pt-br">
   <!-- head contém os metadados do meu arquivo: referencia o próprio documento -->
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dev.financ€$</title>
 
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,100;1,400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <!-- o body, é tudo o que vamos conseguir ver na tela. -->
+
   <body>
     <!-- Analise em quantas partes a pagina se divide, e então crie essas divisões no body: header (cabeçalho), main(corpo) e footer(rodapé)-->
 
     <header>
       <!-- normalmente temos apenas 1 h1 por cada pagina, que é o titulo principal -->
-      <h1 id="logo">dev.financ€$</h1>
+      <img src="./assets/logo.svg" alt="Logo Dev Financ€$" />
     </header>
 
     <main class="container">
       <!-- Abrimos seções para ficar mais arrumadinho. Uma seção logo de cara tem um h2. Também podemos atribuir um atributo chamado id para dizer o que essa seção fará. (organizar) Podemos também usar o atributo "class"-->
       <section id="balance">
         <!-- h2 são subdivisões que temos na pagina e h3 é a subdivisão do h2 -->
-        <h2>Balanço</h2>
+        <h2 class="sr-only">Balanço</h2>
         <div class="card">
           <!-- Uma caixa, como um container -->
-          <h3>Entradas</h3>
-          <p>€ 5.000,00</p>
+          <h3>
+            <!-- O SPAM serve para manter o elemento em linha -->
+            <spam>Entradas</spam>
+            <img src="./assets/income.svg" alt="Imagem de Entradas" />
+          </h3>
+          <p id="incomeDisplay">€ 0,00</p>
         </div>
 
         <div class="card">
-          <h3>Saídas</h3>
-          <p>€ 2.000,00</p>
+          <h3>
+            <spam>Saídas</spam>
+            <img src="./assets/expense.svg" alt="Imagem de Saídas" />
+          </h3>
+          <p id="expenseDisplay">€ 0,00</p>
         </div>
 
         <div class="card total">
-          <h3>Total</h3>
-          <p>€ 3.000,00</p>
+          <h3>
+            <spam>Total</spam>
+            <img src="./assets/total.svg" alt="Imagem de Total" />
+          </h3>
+          <p id="totalDisplay">€ 0,00</p>
         </div>
       </section>
 
       <section id="transaction">
-        <h2>Transações</h2>
+        <h2 class="sr-only">Transações</h2>
+
+        <a href="#" onclick="Modal.open()" class="button new"
+          >+ Nova Transação</a
+        >
+        <!-- onclick serve para disparar uma funcionalidade da tag script (mais abaixo) -->
         <table id="data-table">
           <thead>
             <tr>
               <th>Descrição</th>
               <th>Valor</th>
               <th>Data</th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td class="description">Luz</td>
-              <td class="expense">- € 500,00</td>
-              <td class="date">23/01/2021</td>
-            </tr>
-
-            <tr>
-              <td class="description">Criação Website</td>
-              <td class="income"> € 5.000,00</td>
-              <td class="date">23/01/2021</td>
-            </tr>
-
-            <tr>
-              <td class="description">Internet</td>
-              <td class="expense">- € 200,00</td>
-              <td class="date">23/01/2021</td>
-            </tr>
+            
           </tbody>
         </table>
       </section>
     </main>
 
+    <div class="modal-overlay">
+      <div class="modal">
+        <div id="form">
+          <h2>Nova Transação</h2>
+          <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+              <label class="sr-only" for="description">Descrição</label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Descrição"
+              />
+
+              <div class="input-group">
+                <label class="sr-only" for="amount">Valor</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  id="amount"
+                  name="amount"
+                  placeholder="0,00"
+                />
+                <small class="help"
+                  >Use o sinal - (negativo) para as despesas e , (virgula) para
+                  casas decimais</small
+                >
+
+                <div class="input-group">
+                  <label class="sr-only" for="date">Data</label>
+                  <input type="date" id="date" name="date" />
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group actions">
+              <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
+              <button type="submit">Salvar</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-overlay"></div>
+      </div>
+    </div>
+
     <footer>
-      <p>dev.financ€$</p>
+      <p>2021 - dev.financ€$</p>
     </footer>
+
+    <script src="./scripts.js"></script>
   </body>
 </html>

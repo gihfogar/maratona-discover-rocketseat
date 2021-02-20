@@ -5,6 +5,9 @@
 /* root é um seletor que vai reverenciar a raiz do HTML. */
 :root {
   --dark-blue: #363f5f;
+  --green: #49aa26;
+  --light-green: #3dd705;
+  --red: #e92929;
 }
 * {
   /* margin é o espaçamento entre um elemento e outro */
@@ -15,11 +18,30 @@
   box-sizing: border-box;
 }
 
+html {
+  /* esse tamanho é o mesmo de 15px. 100% de fonte, é 16px. */
+  font-size: 93.75%;
+}
+
 body {
   /*  background é a cor do fundo da caixa*/
   background: #e2e3e6;
   /* Pode copiar a fonte do google, qual quiser e faz a configuração no font-family. */
   font-family: "Poppins", "sans-serif";
+}
+
+.sr-only {
+  /* O position absolute, coloca em cima (ou a frente) de qualquer outra caixa. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  /* CSS TRICKS */
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* A class, diferente do id é chamado por um . e o nome */
@@ -38,10 +60,63 @@ h2 {
   font-weight: normal;
 }
 
+/* Lins & Buttons ========================================== */
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--light-green);
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  margin: 2;
+
+  border: none;
+  color: white;
+  background: var(--green);
+
+  padding: 0;
+
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--light-green);
+}
+
+.button .new {
+  /* display inline-block serve para quando for algo de clicar na pagina, não clicar na linha inteira, mas sim em cima da palavra que leva o clique. Se eu colocasse só o block, a linha toda podia ser clicada, mesmo sem texto */
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.button.cancel {
+  width: 100%;
+  color: var(--red);
+  border: 2px var(--red) solid;
+  border-radius: 0.25rem;
+
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.6;
+}
+
+button.cancel:hover {
+  opacity: 1;
+}
+
 /* Header ========================================== */
 header {
   background: #2d4a22;
-  padding: 2rem 0 10rem;
+  padding: 4rem 0 15rem;
   /* Text-align é o alinhamento do texto, neste caso ao centro */
   text-align: center;
 }
@@ -55,7 +130,7 @@ header {
 
 /* Balance ========================================== */
 #balance {
-  margin-top: -8rem;
+  margin-top: -7rem;
 }
 
 #balance h2 {
@@ -76,34 +151,51 @@ header {
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+  /* display flex muda o comportamento das linhas dentro da caixa */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
   font-size: 2rem;
   /* line-height é a separação de uma linha pra outra caso haja quebra.  */
-  line-height: 3rem;
+  line-height: 4rem;
 
   margin-top: 1rem;
 }
 
 /* esse . no meio de duas palavras significa que estou procurando um elemento que tem duas classes. No HTML posso atribuir quantas classes eu quiser, desde que no CSS eu separo desta forma */
 .card.total {
-  background: #49aa26;
+  background: var(--green);
   color: white;
 }
 
 /* Table ========================================== */
-#data-table {
+#transaction {
+  display: block;
   /* width a 100% é para pegar 100% do tamanho da caixa */
   width: 100%;
+  /* overflow livre significa transbordar. significa que quando rolar para o lado, o eixo x vai deslizar, sem deslizar a parte sem necessidade. */
+  overflow-x: auto;
+}
+
+#data-table {
+  width: 100%;
   /* border-spacing é o espaçamento das linhas da tabela, em cima e dos lados tambem. */
-  border-spacing: 0 0.5rem;
+  border-spacing: 16px 0.5rem;
   color: #969cb3;
+  background: white;
 }
 
 table thead tr th:first-child,
 table tbody tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
 }
 
 #table thead th {
@@ -125,25 +217,116 @@ table tbody tr:hover {
 
 #table tbody td {
   background: white;
-  padding: 1rem 2rem;
+  padding: 2rem 5rem;
 }
 
 td.description {
   color: var(--dark-blue);
+  background: white;
 }
 
 td.income {
   color: #12a454;
+  background: white;
 }
 
 td.expense {
-  color: #e92929;
+  color: var(--red);
+  background: white;
+}
+/* Modal ========================================== */
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 999;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #f2f0f5;
+  padding: 2.4rem;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* Form ========================================== */
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+
+  padding: 0.8rem;
+
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+
+  width: 100%;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
 }
 
 /* Footer ========================================== */
 footer {
   text-align: center;
-  padding: 4rem 0 2rem;
+  padding: 0;
+
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+/* Responsive ========================================== */
+/* at rules, onde posso por uma regra. A regra posta aqui significa: a partir de 800px, vai aplicar essas regras. Abaixo disso, a regra é anulada */
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%; /* são tanto px*/
+  }
+
+  #balance {
+    /* display grid muda horizontal e vertical e pode manipular muito. */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* ou pode por: repeat (3, 1fr) */
+    /* gap é o espaço entre as colunas*/
+    gap: 2rem;
+  }
 }
